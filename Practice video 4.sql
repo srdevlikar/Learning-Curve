@@ -1,0 +1,24 @@
+select * from orders;
+select count(row_id), count(order_id), count(segment) from orders;
+select count(*) as category_count from orders where category = 'Technology';
+select count(distinct state) as State_Count, count(distinct segment) as Segment_Count, count(distinct category) as Category_Count from orders;
+select sum(sales) total_sales, sum(Quantity) total_quantity, Sum(Discount) total_Discount, sum(Profit) total_proft from orders;
+select avg(sales) avg_sales, avg(quantity) avg_qty, avg(discount) avg_discount, avg(profit) avg_proft from orders;
+select min(sales) min_sales, min(quantity) min_qty, min(discount) min_discount, min(profit) min_proft from orders;
+select max(sales) max_sales, max(quantity) max_qty, max(discount) max_discount, max(profit) max_proft from orders;
+select segment, sum(sales) from orders group by segment;
+select category, count(*) from orders group by Category;
+select category, count(category) as count_category, sum(sales) as sum_sales from orders group by Category;
+select category , `Sub-Category`, sum(sales) from orders group by category, `Sub-Category` order by category, `Sub-Category`;
+select category , `Sub-Category`, sum(sales) from orders group by category, `Sub-Category` order by category, sum(sales) desc;
+select category , `Sub-Category`, sum(sales) from orders group by 1, 2 order by 1, 3 desc;
+select segment, sum(sales) from orders group by segment having sum(sales) > 750000;
+select * from orders limit 10 offset 5;
+
+Practice Problems;
+select * from orders;
+select region, count(region) from orders group by region;
+select distinct `sub-category` from orders;
+select `sub-category`, avg(discount) from orders group by `sub-category`;
+select region, sum(profit) from orders group by region;
+select `sub-category`, min(sales), max(sales) from orders where (`sub-category` = 'Phones' or `sub-category` = 'Chairs') group by `sub-category`;
